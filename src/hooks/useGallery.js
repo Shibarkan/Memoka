@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
+import { toast } from "react-hot-toast";
 
 export const useGallery = () => {
   const [galleryItems, setGalleryItems] = useState([]);
@@ -64,7 +65,7 @@ export const useGallery = () => {
 
     if (error) {
       console.error("Error updating:", error.message);
-      alert("Gagal update keterangan.");
+      toast.error("Gagal update keterangan.");
       return;
     }
 
@@ -96,23 +97,51 @@ export const useGallery = () => {
 
       if (error) {
         console.error("Error deleting:", error.message);
-        alert("Gagal menghapus.");
+        toast.error("Gagal menghapus.");
         return;
       }
 
       setGalleryItems((prev) => prev.filter((item) => !selectedIds.includes(item.id)));
     } catch (err) {
       console.error(err);
-      alert("Gagal menghapus.");
+      toast.error("Gagal menghapus.");
     }
   };
 
-  // 👥 Join friend gallery
-  const handleJoinGallery = (friendCode) => {
+  // 👥 Join friend gallery dengan validasi
+  const handleJoinGallery = async (friendCode) => {
+    const myCode = getMyCode();
+
+    // ❌ Cek jika kode sama dengan milik sendiri
+    if (friendCode === myCode) {
+      toast.error("Kamu tidak bisa membuka gallery milik sendiri!");
+      return;
+    }
+
+    // 🔍 Cek apakah kode gallery teman ada
+    const { data, error } = await supabase
+      .from("galleries")
+      .select("id")
+      .eq("user_code", friendCode)
+      .limit(1);
+
+    if (error) {
+      console.error("Error checking code:", error.message);
+      toast.error("Terjadi kesalahan saat memeriksa kode.");
+      return;
+    }
+
+    if (!data || data.length === 0) {
+      toast.error("Kode tidak ditemukan. Periksa kembali.");
+      return;
+    }
+
+    // ✅ Jika ada, masuk ke gallery teman
     localStorage.setItem("memoka_friend_code", friendCode);
     setIsFriendGallery(true);
     setCurrentCode(friendCode);
     fetchGallery(friendCode);
+    toast.success("Berhasil masuk ke gallery teman!");
   };
 
   // 🔙 Exit friend gallery
@@ -122,6 +151,7 @@ export const useGallery = () => {
     setIsFriendGallery(false);
     setCurrentCode(myCode);
     fetchGallery(myCode);
+    toast.success("Kembali ke gallery sendiri!");
   };
 
   return {
