@@ -49,7 +49,7 @@ function App() {
         />
       )}
 
-      {/* ➕ Upload Button */}
+      {/*  Upload Button */}
       {!isFriendGallery && (
         <button
           onClick={() => setIsUploadOpen(true)}
@@ -59,10 +59,10 @@ function App() {
         </button>
       )}
 
-      {/* 🎵 Music Button */}
+      {/*  Music Button */}
       <MusicPlayer />
 
-      {/* 📤 Upload Modal */}
+      {/* Upload Modal */}
       <UploadModal
         isOpen={isUploadOpen}
         setIsOpen={setIsUploadOpen}
