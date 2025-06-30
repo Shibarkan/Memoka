@@ -8,8 +8,11 @@ import Gallery from "./components/Gallery";
 import MusicPlayer from "./components/MusicPlayer";
 import FriendGalleryBanner from "./components/FriendGalleryBanner";
 import Tittle from "./components/Tittle";
+import FloatingHearts from "./components/FloatingHearts";
+
 import { useGallery } from "./hooks/useGallery";
 import bg from "./assets/bg.png";
+import heartGif from "./assets/heart.gif";
 
 function App() {
   const {
@@ -37,7 +40,7 @@ function App() {
       className="min-h-screen bg-cover bg-center relative"
       style={{ backgroundImage: `url(${bg})` }}
     >
-      <Tittle/>
+      <Tittle />
       {/* 🔍 Banner kalau lagi liat gallery teman */}
       {isFriendGallery && (
         <FriendGalleryBanner
@@ -83,11 +86,16 @@ function App() {
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="fixed bottom-2 left-1/2 -translate-x-1/2 text-xs text-neutral-500"
+        className="fixed bottom-2 left-1/2 -translate-x-1/2 text-xs text-neutral-500 flex items-center gap-2"
       >
-        © 2025 Memoka. Dibuat dengan ❤️
+        © 2025 Memoka. Lovely Gallery{" "}
+        <img
+          src={heartGif}
+          alt="heart"
+          style={{ width: "24px", height: "24px" }}
+        />
       </motion.div>
-
+      <FloatingHearts />
       <Toaster position="top-center" />
     </div>
   );
