@@ -87,6 +87,30 @@ const MusicPlayer = () => {
     };
   }, [current]);
 
+  // ⏭️ Auto Next Ketika Lagu Selesai
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const handleEnded = () => {
+      const currentIndex = musicList.findIndex(
+        (item) => item.name === current?.name
+      );
+      const nextIndex = (currentIndex + 1) % musicList.length;
+      const nextSong = musicList[nextIndex];
+      setCurrent(nextSong);
+      setTimeout(() => {
+        audioRef.current?.play();
+        setIsPlaying(true);
+      }, 100);
+    };
+
+    audio.addEventListener("ended", handleEnded);
+    return () => {
+      audio.removeEventListener("ended", handleEnded);
+    };
+  }, [current, musicList]);
+
   const handleOverlayClick = () => setShow(false);
 
   // 🔤 Format nama file
@@ -177,32 +201,34 @@ const MusicPlayer = () => {
                   </span>
                 </div>
 
-                {/* 🚀 Progress Bar Keren */}
-                <div className="relative w-full h-3 rounded-full bg-gray-200 overflow-hidden">
+                {/* 🚀 Progress Bar Stylish */}
+                <div className="relative w-full h-3 rounded-full bg-gray-800 shadow-inner overflow-hidden">
                   <div
-                    className="absolute top-0 left-0 h-full bg-gradient-to-r from-pink-400 to-fuchsia-500 transition-all duration-300"
-                    style={{ width: `${progress}%` }}
+                    className="absolute top-0 left-0 h-full rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 transition-all duration-300"
+                    style={{
+                      width: `${progress}%`,
+                      boxShadow: `0 0 8px rgba(219,39,119,0.6)`,
+                    }}
                   ></div>
 
                   <input
                     type="range"
+                    min="0"
+                    max="100"
                     value={progress}
                     onChange={(e) => {
                       const seek =
                         (audioRef.current.duration * e.target.value) / 100;
                       audioRef.current.currentTime = seek;
-                      setProgress(e.target.value);
+                      setProgress(Number(e.target.value));
                     }}
-                    className="absolute top-0 left-0 w-full h-3 opacity-0 cursor-pointer"
+                    className="absolute inset-0 w-full h-full appearance-none cursor-pointer opacity-0"
                   />
 
-                  {/* Thumb */}
                   <div
-                    className="absolute top-1/2 -translate-y-1/2"
-                    style={{ left: `calc(${progress}% - 8px)` }}
-                  >
-                    <div className="w-4 h-4 bg-neutral-600 border-2 border-black rounded-full shadow-md hover:scale-110 transition-transform"></div>
-                  </div>
+                    className="absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-white rounded-full shadow-lg transition-transform duration-200 hover:scale-125"
+                    style={{ left: `calc(${progress}% - 10px)` }}
+                  />
                 </div>
               </div>
             </motion.div>
@@ -210,7 +236,6 @@ const MusicPlayer = () => {
         )}
       </AnimatePresence>
 
-      {/* 🔊 Audio */}
       {/* 🔊 Audio */}
       {current && <audio ref={audioRef} src={current.src} />}
     </>

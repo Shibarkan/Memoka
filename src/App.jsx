@@ -86,15 +86,14 @@ function App() {
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="fixed bottom-2 left-1/2 -translate-x-1/2 text-xs text-neutral-500 flex items-center gap-2"
+        className="fixed bottom-2 left-1/2 -translate-x-1/2 text-xs font-semibold flex items-center gap-1"
       >
-        © 2025 Memoka. Lovely Gallery{" "}
-        <img
-          src={heartGif}
-          alt="heart"
-          style={{ width: "24px", height: "24px" }}
-        />
+        <span className="bg-gradient-to-r from-pink-500 to-fuchsia-500 bg-clip-text text-transparent">
+          © 2025 Memoka • Lovely Gallery
+        </span>
+        <img src={heartGif} alt="heart" className="w-4 h-4 animate-pulse" />
       </motion.div>
+
       <FloatingHearts />
       <Toaster position="top-center" />
     </div>
