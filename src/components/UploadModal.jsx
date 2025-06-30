@@ -46,9 +46,7 @@ const UploadModal = ({
       // Dapatkan public URL
       const {
         data: { publicUrl },
-      } = supabase.storage
-        .from("gallery-bucket")
-        .getPublicUrl(filePath);
+      } = supabase.storage.from("gallery-bucket").getPublicUrl(filePath);
 
       // Simpan metadata ke DB
       const { data, error: dbError } = await supabase
@@ -113,32 +111,58 @@ const UploadModal = ({
 
             <h2 className="text-lg font-semibold mb-4">Tambah Foto</h2>
 
-            <form onSubmit={handleSubmit} className="space-y-3">
-              <input
-                type="file"
-                accept="image/*"
-                ref={fileRef}
-                onChange={handleFileChange}
-                className="w-full border rounded p-2"
-              />
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="flex items-center justify-center w-full">
+                <label
+                  htmlFor="dropzone-file"
+                  className="w-full h-40 bg-white rounded-xl shadow-md border border-gray-200 flex flex-col items-center justify-center cursor-pointer hover:shadow-lg transition"
+                >
+                  <p className="text-pink-500 font-semibold mb-1">
+                    Upload Gambar
+                  </p>
+                  <p className="text-gray-400 text-sm mb-2">
+                    Klik untuk memilih atau drag & drop
+                  </p>
+                  <p className="text-xs text-gray-300">
+                    Format PNG, JPG, JPEG (max 5MB)
+                  </p>
+                  <input
+                    id="dropzone-file"
+                    type="file"
+                    accept="image/*"
+                    ref={fileRef}
+                    onChange={handleFileChange}
+                    className="hidden"
+                  />
+                </label>
+              </div>
+
               {preview && (
-                <img
-                  src={preview}
-                  alt="preview"
-                  className="w-full h-40 object-cover rounded"
-                />
+                <div className="w-full h-40 rounded-xl overflow-hidden shadow-md border">
+                  <img
+                    src={preview}
+                    alt="preview"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               )}
+
               <input
                 type="text"
                 placeholder="Keterangan (opsional)"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="w-full border rounded p-2"
+                className="w-full border rounded-xl p-2 focus:ring-2 focus:ring-pink-400 outline-none shadow-sm"
               />
+
               <button
                 type="submit"
                 disabled={uploading}
-                className="w-full bg-pink-500 hover:bg-pink-600 text-white rounded p-2 flex items-center justify-center gap-2"
+                className={`w-full ${
+                  uploading
+                    ? "bg-pink-300 cursor-not-allowed"
+                    : "bg-pink-500 hover:bg-pink-600"
+                } text-white rounded-xl p-2 flex items-center justify-center gap-2 transition shadow-md`}
               >
                 <Upload size={16} />
                 {uploading ? "Mengupload..." : "Upload"}
