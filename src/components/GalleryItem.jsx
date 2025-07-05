@@ -54,7 +54,7 @@ const GalleryItem = ({
           <div>
             <p className="text-sm text-neutral-700">
               {item.description || (
-                <i className="text-neutral-400">Tanpa keterangan</i>
+                <i className="text-neutral-400"></i>
               )}
             </p>
             <div className="text-xs text-neutral-400">
