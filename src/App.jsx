@@ -9,6 +9,7 @@ import MusicPlayer from "./components/MusicPlayer";
 import FriendGalleryBanner from "./components/FriendGalleryBanner";
 import Tittle from "./components/Tittle";
 import FloatingHearts from "./components/FloatingHearts";
+import Alert from "./components/Alert";
 
 import { useGallery } from "./hooks/useGallery";
 import bg from "./assets/bg.png";
@@ -96,6 +97,7 @@ function App() {
 
       <FloatingHearts />
       <Toaster position="top-center" />
+      <Alert/>
     </div>
   );
 }
