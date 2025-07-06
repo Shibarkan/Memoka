@@ -29,7 +29,7 @@ export default function Alert() {
             src={alertImg}
             alt="alert"
             onClick={handleClick}
-            className="w-12 h-12 cursor-pointer hover:scale-110 transition-transform duration-300"
+            className="w-8 h-8 cursor-pointer hover:scale-110 transition-transform duration-300"
           />
         </motion.div>
       )}
@@ -43,16 +43,24 @@ export default function Alert() {
             transition={{ duration: 0.3 }}
             className="bg-white p-6 rounded-2xl shadow-xl max-w-md w-full mx-4 text-center"
           >
-            <h2 className="text-xl font-bold mb-3 text-gray-800">Memoka - LoveGallery</h2>
+            <h2 className="text-xl font-bold mb-3 text-gray-800">
+              Memoka - LoveGallery
+            </h2>
             <ul className="text-gray-600 text-left list-disc pl-6">
-            <p>Adalah website dimana kamu bisa upload file dalam format png/jpg/jpeg/gif, lalu ditampilkan di layar sehingga mirip phothobooth yang estetik</p>
+              <p>
+                Adalah website dimana kamu bisa upload file dalam format
+                png/jpg/jpeg/gif, lalu ditampilkan di layar sehingga mirip
+                phothobooth yang estetik
+              </p>
               <br />
               <li>Upload ✅</li>
               <li>Edit✅</li>
               <li>Review Gallery Teman ✅</li>
               <li>Putar Music ✅</li>
               <br />
-              <strong><p>Ayo kunjungi gallery teman teman anda!!</p></strong>
+              <strong>
+                <p>Ayo kunjungi gallery teman teman anda!!</p>
+              </strong>
             </ul>
             <button
               onClick={handleClose}
