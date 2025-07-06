@@ -133,7 +133,7 @@ const MusicPlayer = () => {
         <img
           src={musicPlay}
           alt="Music"
-          className={`w-7 h-7 ${isPlaying ? "animate-spin" : ""}`}
+          className={`w-6 h-6 ${isPlaying ? "animate-spin" : ""}`}
         />
       </div>
 
@@ -193,7 +193,7 @@ const MusicPlayer = () => {
                     <img
                       src={isPlaying ? pauseIcon : playIcon}
                       alt="PlayPause"
-                      className="w-6 h-6"
+                      className="w-4 h-4"
                     />
                   </button>
                   <span className="text-gray-700 text-sm truncate">
