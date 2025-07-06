@@ -46,6 +46,7 @@ const Gallery = ({
       {!isFriendGallery && (
         <button
           onClick={toggleDeleteMode}
+          aria-label="delete mode activatea"
           className={`fixed bottom-24 right-4 z-50 p-3 rounded-full shadow-lg 
             ${
               deleteMode
@@ -53,7 +54,7 @@ const Gallery = ({
                 : "bg-neutral-700 hover:bg-neutral-800"
             } text-white hover:scale-110 transition`}
         >
-          <Trash2 />
+          <Trash2 /> 
         </button>
       )}
 

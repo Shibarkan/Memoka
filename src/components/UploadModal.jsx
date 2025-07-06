@@ -158,13 +158,14 @@ const UploadModal = ({
               <button
                 type="submit"
                 disabled={uploading}
+                aria-label="upload modal"
                 className={`w-full ${
                   uploading
                     ? "bg-pink-300 cursor-not-allowed"
                     : "bg-pink-500 hover:bg-pink-600"
                 } text-white rounded-xl p-2 flex items-center justify-center gap-2 transition shadow-md`}
               >
-                <Upload size={16} />
+                <Upload size={16} /> 
                 {uploading ? "Mengupload..." : "Upload"}
               </button>
             </form>
