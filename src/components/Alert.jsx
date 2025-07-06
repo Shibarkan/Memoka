@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import alertImg from "../assets/alert.jpeg";
+import alertImg from "../assets/alert.WebP";
 
 export default function Alert() {
   const [showPopup, setShowPopup] = useState(false);

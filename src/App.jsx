@@ -12,7 +12,7 @@ import FloatingHearts from "./components/FloatingHearts";
 import Alert from "./components/Alert";
 
 import { useGallery } from "./hooks/useGallery";
-import bg from "./assets/bg.jpeg";
+import bg from "./assets/bg.WebP";
 
 function App() {
   const {

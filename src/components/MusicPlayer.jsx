@@ -3,9 +3,9 @@ import { supabase } from "../supabaseClient";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import playIcon from "../assets/play.jpeg";
-import pauseIcon from "../assets/pause.jpeg";
-import musicPlay from "../assets/musicPlay.jpeg";
+import playIcon from "../assets/play.WebP";
+import pauseIcon from "../assets/pause.WebP";
+import musicPlay from "../assets/musicPlay.WebP";
 
 const MusicPlayer = () => {
   const [show, setShow] = useState(false);
