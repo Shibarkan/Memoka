@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import heartImg from "../assets/heart.png"; // Pastikan path benar
+import heartImg from "../assets/heart.jpeg"; // Pastikan path benar
 
 const FloatingHearts = () => {
   const [hearts, setHearts] = useState([]);
