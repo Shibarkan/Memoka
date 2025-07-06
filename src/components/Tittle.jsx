@@ -21,8 +21,6 @@ const Title = () => {
           My Gallery
         </h1>
       </div>
-
-      <p className="mt-4 text-sm text-white/60 italic">Kumpulan momen dan karya terbaikku ✨</p>
     </motion.div>
   );
 };

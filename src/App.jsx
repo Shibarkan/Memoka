@@ -13,7 +13,6 @@ import Alert from "./components/Alert";
 
 import { useGallery } from "./hooks/useGallery";
 import bg from "./assets/bg.png";
-import heartGif from "./assets/heart.gif";
 
 function App() {
   const {
@@ -92,7 +91,6 @@ function App() {
         <span className="bg-gradient-to-r from-pink-500 to-fuchsia-500 bg-clip-text text-transparent">
           © 2025 Memoka • Lovely Gallery
         </span>
-        <img src={heartGif} alt="heart" className="w-4 h-4 animate-pulse" />
       </motion.div>
 
       <FloatingHearts />
