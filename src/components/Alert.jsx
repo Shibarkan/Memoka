@@ -61,6 +61,8 @@ export default function Alert() {
               <strong>
                 <p>Ayo kunjungi gallery teman teman anda!!</p>
               </strong>
+
+              <br />
             </ul>
             <button
               onClick={handleClose}
