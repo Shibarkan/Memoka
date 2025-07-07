@@ -4,7 +4,7 @@ import heartImg from "../assets/heart.WebP"; // Pastikan path benar
 
 const FloatingHearts = () => {
   const [hearts, setHearts] = useState([]);
-  const MAX_HEARTS = 20;
+  const MAX_HEARTS = 10;
 
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
@@ -42,7 +42,7 @@ const FloatingHearts = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(createHeart, 600); // ganti 1000 jika ingin lebih ringan
+    const interval = setInterval(createHeart, 1000);
     return () => clearInterval(interval);
   }, [hearts, windowSize]);
 
@@ -53,6 +53,7 @@ const FloatingHearts = () => {
           <motion.img
             key={heart.id}
             src={heartImg}
+            aria-label="heart"
             alt="heart"
             initial={{ y: windowSize.height, opacity: 1, rotate: 0 }}
             animate={{

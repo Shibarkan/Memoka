@@ -2,7 +2,7 @@ const FriendGalleryBanner = ({ currentCode, exitFriendGallery }) => (
 <div className="fixed top-4 left-1/2 -translate-x-1/2 backdrop-blur-lg bg-white/60 shadow-2xl rounded-3xl px-8 py-4 z-50 border border-pink-200 ring-2 ring-pink-100 animate-slide-in-down">
   <p className="text-sm text-neutral-800 text-center">
     <span className="inline-block animate-pulse mr-1">📸</span>
-    <span className="font-medium">Sedang melihat galeri teman</span>
+    <span className="font-small">Kamu sedang berada di gallery teman</span>
     <br />
     <b className="text-pink-500 text-base tracking-wide">{currentCode}</b>
   </p>
@@ -12,7 +12,7 @@ const FriendGalleryBanner = ({ currentCode, exitFriendGallery }) => (
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-5 w-5 mr-2"
+      className="h-6 w-6 mr-2"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
