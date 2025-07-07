@@ -165,7 +165,7 @@ const UploadModal = ({
                     : "bg-pink-500 hover:bg-pink-600"
                 } text-white rounded-xl p-2 flex items-center justify-center gap-2 transition shadow-md`}
               >
-                <Upload size={16} /> 
+                <Upload size={16} />
                 {uploading ? "Mengupload..." : "Upload"}
               </button>
             </form>
@@ -178,19 +178,21 @@ const UploadModal = ({
               </p>
 
               {!isFriendGallery ? (
-                <form onSubmit={handleJoin} className="flex gap-2">
+                <form onSubmit={handleJoin} className="flex gap-2 items-center">
                   <input
                     type="text"
-                    placeholder="Kode gallery teman"
+                    placeholder="Masukkan kode gallery teman untuk bergabung"
                     value={friendCode}
                     onChange={(e) => setFriendCode(e.target.value)}
-                    className="flex-1 border rounded p-2"
+                    className="flex-1 border rounded p-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-500"
                   />
                   <button
                     type="submit"
-                    className="bg-neutral-700 hover:bg-neutral-800 text-white rounded p-2"
+                    className="flex items-center gap-2 bg-neutral-700 hover:bg-neutral-800 text-white rounded p-2 px-3 transition"
+                    title="Gabung ke gallery teman"
                   >
                     <Users size={16} />
+                    <span className="text-sm">Gabung</span>
                   </button>
                 </form>
               ) : (
