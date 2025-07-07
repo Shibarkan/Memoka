@@ -1,10 +1,7 @@
 const FriendGalleryBanner = ({ currentCode, exitFriendGallery }) => (
 <div className="fixed top-4 left-1/2 -translate-x-1/2 backdrop-blur-lg bg-white/60 shadow-2xl rounded-3xl px-8 py-4 z-50 border border-pink-200 ring-2 ring-pink-100 animate-slide-in-down">
   <p className="text-sm text-neutral-800 text-center">
-    <span className="inline-block animate-pulse mr-1">📸</span>
-    <span className="font-small">Kamu sedang berada di gallery teman</span>
-    <br />
-    <b className="text-pink-500 text-base tracking-wide">{currentCode}</b>
+    <span className="inline-block animate-pulse mr-1">📸{currentCode}</span>
   </p>
   <button
     onClick={exitFriendGallery}
