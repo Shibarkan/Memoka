@@ -173,8 +173,8 @@ const UploadModal = ({
             <hr className="my-4" />
 
             <div className="space-y-2">
-              <p className="text-sm">
-                🎟️ <strong>Kode Gallery Kamu:</strong> {currentCode}
+              <p className="text-sm bg-pink-200">
+                🎟️ <strong  >Kode Gallery Kamu:</strong> {currentCode}
               </p>
 
               {!isFriendGallery ? (
