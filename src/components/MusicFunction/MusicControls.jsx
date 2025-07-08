@@ -27,7 +27,7 @@ const MusicControls = ({
         {current ? cleanFileName(current.name) : "Belum ada lagu"}
       </span>
     </div>
-
+ 
     <div className="relative w-full h-3 rounded-full bg-gray-800 shadow-inner overflow-hidden">
       <div
         className="absolute top-0 left-0 h-full rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 transition-all duration-300"
