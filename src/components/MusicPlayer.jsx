@@ -6,10 +6,10 @@ import { toast } from "react-hot-toast";
 import { useUserCode } from "../hooks/useUserCode";
 
 import musicPlay from "../assets/musicPlay.WebP";
-import MusicTabs from "./MusicFunction/MusicTabs";
-import MusicUploader from "./MusicFunction/Musicuploader";
-import MusicList from "./MusicFunction/MusicList";
-import MusicControls from "./MusicFunction/MusicControls";
+import MusicTabs from "./controlmusic/MusicTabs";
+import MusicUploader from "./controlmusic/MusicUploader";
+import MusicList from "./controlmusic/MusicList";
+import MusicControls from "./controlmusic/MusicControls";
 
 const MusicPlayer = () => {
   const [show, setShow] = useState(false);
