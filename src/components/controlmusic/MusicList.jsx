@@ -1,6 +1,15 @@
-import { Trash2 } from "lucide-react";
+import { Trash2, Star } from "lucide-react";
 
-const MusicList = ({ musicList, current, onSelect, onConfirmDelete, tab, cleanFileName }) => (
+const MusicList = ({
+  musicList,
+  current,
+  onSelect,
+  onConfirmDelete,
+  tab,
+  cleanFileName,
+  toggleFavorite,
+  isFavorite,
+}) => (
   <ul className="space-y-2 max-h-40 overflow-y-auto pr-2 text-sm">
     {musicList.map((song) => (
       <li
@@ -17,13 +26,29 @@ const MusicList = ({ musicList, current, onSelect, onConfirmDelete, tab, cleanFi
         </span>
 
         {tab === "user" && (
-          <button
-            onClick={() => onConfirmDelete(song)}
-            className="text-gray-400 hover:text-red-500 transition"
-            aria-label="Hapus lagu"
-          >
-            <Trash2 className="w-4 h-4" />
-          </button>
+          <div className="flex items-center gap-2">
+            {/* Tombol favorit */}
+            <button
+              onClick={() => toggleFavorite(song.name)}
+              className="text-yellow-400 hover:text-yellow-500 transition"
+              aria-label="Toggle Favorite"
+            >
+              <Star
+                className={`w-4 h-4 ${
+                  isFavorite(song.name) ? "fill-current" : ""
+                }`}
+              />
+            </button>
+
+            {/* Tombol hapus */}
+            <button
+              onClick={() => onConfirmDelete(song)}
+              className="text-gray-400 hover:text-red-500 transition"
+              aria-label="Hapus lagu"
+            >
+              <Trash2 className="w-4 h-4" />
+            </button>
+          </div>
         )}
       </li>
     ))}

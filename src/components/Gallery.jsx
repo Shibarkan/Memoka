@@ -96,6 +96,7 @@ const Gallery = ({
             deleteMode={deleteMode}
             toggleSelect={toggleSelect}
             selectedItems={selectedItems}
+            currentCode={code}
           />
         ))}
       </div>

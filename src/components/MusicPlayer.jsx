@@ -4,12 +4,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "react-hot-toast";
 
 import { useUserCode } from "../hooks/useUserCode";
+import { useFavorites } from "../hooks/useFavorites";
 
 import musicPlay from "../assets/musicPlay.WebP";
 import MusicTabs from "./controlmusic/MusicTabs";
 import MusicUploader from "./controlmusic/MusicUploader";
 import MusicList from "./controlmusic/MusicList";
 import MusicControls from "./controlmusic/MusicControls";
+import WaveformVisualizer from "./controlmusic/Waveform";
 
 const MusicPlayer = () => {
   const [show, setShow] = useState(false);
@@ -20,6 +22,7 @@ const MusicPlayer = () => {
   const [tab, setTab] = useState("default");
   const userCode = useUserCode();
   const [confirmDelete, setConfirmDelete] = useState(null);
+  const { toggleFavorite, isFavorite } = useFavorites();
 
   const audioRef = useRef(null);
 
@@ -246,10 +249,13 @@ const MusicPlayer = () => {
                 musicList={musicList}
                 current={current}
                 onSelect={handleSelect}
-                onConfirmDelete={(song) => setConfirmDelete(song)}
+                onConfirmDelete={setConfirmDelete}
                 tab={tab}
                 cleanFileName={cleanFileName}
+                toggleFavorite={toggleFavorite}
+                isFavorite={isFavorite}
               />
+
               <MusicControls
                 current={current}
                 isPlaying={isPlaying}
@@ -260,6 +266,9 @@ const MusicPlayer = () => {
                 setProgress={setProgress}
                 audioRef={audioRef}
               />
+              {tab === "user" && current && (
+                <WaveformVisualizer audioRef={audioRef} />
+              )}
             </motion.div>
 
             {confirmDelete && (

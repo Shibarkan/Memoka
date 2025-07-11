@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
+import { Upload } from "lucide-react";
 import { motion } from "framer-motion";
-import { Ticket, Upload } from "lucide-react";
 
 import UploadModal from "./components/UploadModal";
 import Gallery from "./components/Gallery";
@@ -12,7 +12,7 @@ import FloatingHearts from "./components/FloatingHearts";
 import Alert from "./components/Alert";
 
 import { useGallery } from "./hooks/useGallery";
-import bg from "./assets/bg.WebP";
+import BackgroundImg from "./assets/bg.WebP";
 
 function App() {
   const {
@@ -37,11 +37,12 @@ function App() {
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center relative"
-      style={{ backgroundImage: `url(${bg})` }}
+      className="min-h-screen w-full bg-cover bg-center bg-fixed bg-no-repeat overflow-x-hidden"
+      style={{ backgroundImage: `url(${BackgroundImg})` }}
     >
       <Tittle />
-      {/* 🔍 Banner kalau lagi liat gallery teman */}
+
+      {/* 🔍 Banner saat masuk galeri teman */}
       {isFriendGallery && (
         <FriendGalleryBanner
           currentCode={currentCode}
@@ -49,7 +50,7 @@ function App() {
         />
       )}
 
-      {/*  Upload Button */}
+      {/* Tombol Upload */}
       {!isFriendGallery && (
         <button
           onClick={() => setIsUploadOpen(true)}
@@ -59,10 +60,10 @@ function App() {
         </button>
       )}
 
-      {/*  Music Button */}
+      {/* Pemutar Musik */}
       <MusicPlayer />
 
-      {/* Upload Modal */}
+      {/* Modal Upload */}
       <UploadModal
         isOpen={isUploadOpen}
         setIsOpen={setIsUploadOpen}
@@ -73,7 +74,7 @@ function App() {
         exitFriendGallery={exitFriendGallery}
       />
 
-      {/* 🖼️ Gallery */}
+      {/* Galeri */}
       <Gallery
         code={currentCode}
         isFriendGallery={isFriendGallery}
@@ -82,20 +83,10 @@ function App() {
         handleDelete={handleDelete}
       />
 
-      {/* 📜 Footer */}
-      <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="fixed bottom-2 left-1/2 -translate-x-1/2 text-xs font-semibold flex items-center gap-1"
-      >
-        <span className="bg-gradient-to-r from-pink-500 to-fuchsia-500 bg-clip-text text-transparent">
-          © 2025 Memoka • Lovely Gallery
-        </span>
-      </motion.div>
-
+      {/* Floating & Toaster */}
       <FloatingHearts />
       <Toaster position="top-center" />
-      <Alert/>
+      <Alert />
     </div>
   );
 }

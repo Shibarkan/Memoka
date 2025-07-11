@@ -30,7 +30,7 @@ const MusicControls = ({
  
     <div className="relative w-full h-3 rounded-full bg-gray-800 shadow-inner overflow-hidden">
       <div
-        className="absolute top-0 left-0 h-full rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 transition-all duration-300"
+        className="absolute top-0 left-0 h-full rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500"
         style={{
           width: `${progress}%`,
           boxShadow: `0 0 8px rgba(219,39,119,0.6)`,
