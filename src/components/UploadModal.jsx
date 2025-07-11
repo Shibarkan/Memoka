@@ -158,14 +158,13 @@ const UploadModal = ({
               <button
                 type="submit"
                 disabled={uploading}
-                aria-label="Button Upload Picture"
                 className={`w-full ${
                   uploading
                     ? "bg-pink-300 cursor-not-allowed"
                     : "bg-pink-500 hover:bg-pink-600"
                 } text-white rounded-xl p-2 flex items-center justify-center gap-2 transition shadow-md`}
               >
-                <Upload size={18} />
+                <Upload size={18} aria-hidden="true" focusable="false" />
                 {uploading ? "Mengupload..." : "Upload"}
               </button>
             </form>
@@ -174,7 +173,7 @@ const UploadModal = ({
 
             <div className="space-y-2">
               <p className="text-sm bg-pink-200">
-                🎟️ <strong  >Kode Gallery Kamu:</strong> {currentCode}
+                🎟️ <strong>Kode Gallery Kamu:</strong> {currentCode}
               </p>
 
               {!isFriendGallery ? (
