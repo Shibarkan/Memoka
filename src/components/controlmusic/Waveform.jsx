@@ -9,12 +9,12 @@ const WaveformVisualizer = ({ audioRef }) => {
     const audio = audioRef.current;
     if (!audio || !audio.src || !waveformRef.current) return;
 
-    // Destroy sebelumnya jika ada
+
     if (wavesurfer.current) {
       wavesurfer.current.destroy();
     }
 
-    // Inisialisasi WaveSurfer
+
     wavesurfer.current = WaveSurfer.create({
       container: waveformRef.current,
       waveColor: "rgba(236, 72, 153, 0.3)",
@@ -28,14 +28,14 @@ const WaveformVisualizer = ({ audioRef }) => {
       cursorWidth: 1.5,
     });
 
-    // Load audio
+
     wavesurfer.current.load(audio.src).catch((err) => {
       if (err.name !== "AbortError") {
         console.error("Waveform load error:", err);
       }
     });
 
-    // Sinkronisasi progress
+
     const syncProgress = () => {
       if (
         wavesurfer.current &&
@@ -50,7 +50,7 @@ const WaveformVisualizer = ({ audioRef }) => {
 
     audio.addEventListener("timeupdate", syncProgress);
 
-    // Cleanup saat unmount
+
     return () => {
       audio.removeEventListener("timeupdate", syncProgress);
       if (wavesurfer.current) {

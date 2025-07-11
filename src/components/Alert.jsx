@@ -9,7 +9,7 @@ export default function Alert() {
   const handleClick = () => {
     setShowPopup(true);
   };
-
+ 
   const handleClose = () => {
     setShowPopup(false);
     setHideIcon(true); // sembunyikan ikon setelah popup ditutup
